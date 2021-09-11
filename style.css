@@ -1,0 +1,71 @@
+*{
+    box-sizing: border-box;
+}
+.body {
+    background: skyblue;
+}
+.container {
+    width: 600px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: rgb(40, 40, 40);
+    color: snow;
+    border-radius: 5px;
+    font-family: 'Play', sans-serif;
+}
+.row, .weather {
+    display: flex;
+    flex-wrap: wrap;
+}
+.weather {
+    flex: 0 0 100%;
+}
+.header {
+    display: flex;
+    flex: 0 0 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.cur-date, .cur-time, .location {
+    flex: 0 0 30%;
+    font-size: 1.5em;
+}
+.cur-time {
+    text-align: end;
+}
+.parameters {
+    display: flex;
+    flex: 0 0 60%;
+    flex-wrap: wrap;
+}
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 40%;
+}
+.humidity, .wind-dir, .wind-speed,
+ .press, .temp, .description, .icon {
+    flex: 0 0 100%;
+}
+.temp, .description, .icon {
+    text-align: center;
+}
+.temp {
+    font-size: 2em;
+    margin: 20px 0;
+    color: yellow;
+}
+.description {
+    font-size: 1.5em;
+    color: teal;
+}
+.change-location {
+    display: flex;
+    flex: 0 0 100%;
+    justify-content: center;   
+    margin-top: 20px; 
+}
+.loc-btn {
+    cursor: pointer;
+    margin-left: 10px;
+}
