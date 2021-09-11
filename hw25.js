@@ -16,10 +16,10 @@ inputField.addEventListener("focus", clearField);
 locBtn.addEventListener("click", request);
 
 function request() {
-    console.log(setLocation(inputField.value));
-    /*fetch(setLocation(inputField.value))
+    //console.log(setLocation(inputField.value));
+    fetch(setLocation(inputField.value))
     .then(responce => responce.json())
-    .then(json => getData(json));*/
+    .then(json => getData(json));
 }
     
 function getData(obj) {
@@ -61,7 +61,7 @@ function setLocation(location) {
 };
 
 function getImageURL(img){
-    return "http://openweathermap.org/img/w/"+img+".png";
+    return "https://openweathermap.org/img/w/"+img+".png";
 };
 
 function getMonthName(mon) {
