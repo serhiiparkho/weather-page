@@ -16,10 +16,10 @@ inputField.addEventListener("focus", clearField);
 locBtn.addEventListener("click", request);
 
 function request() {
-    //console.log(setLocation(inputField.value));
-    fetch(setLocation(inputField.value))
+    console.log(setLocation(inputField.value));
+    /*fetch(setLocation(inputField.value))
     .then(responce => responce.json())
-    .then(json => getData(json));
+    .then(json => getData(json));*/
 }
     
 function getData(obj) {
@@ -57,10 +57,7 @@ function windDirection(deg) {
 };
 
 function setLocation(location) {
-    let str = "http://api.openweathermap.org/data/2.5/weather?q=&units=metric&APPID=5d066958a60d315387d9492393935c19"
-    let buff = str.split("");
-    buff.splice(49, 0, location);
-    return buff.join("");
+    return "https://api.openweathermap.org/data/2.5/weather?q="+location+"&units=metric&APPID=5d066958a60d315387d9492393935c19"
 };
 
 function getImageURL(img){
