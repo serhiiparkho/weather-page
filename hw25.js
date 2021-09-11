@@ -57,14 +57,14 @@ function windDirection(deg) {
 };
 
 function setLocation(location) {
-    let str = "http://api.openweathermap.org/data/2.5/weather?q=&units=metric&APPID=5d066958a60d315387d9492393935c19"
+    let str = "https://api.openweathermap.org/data/2.5/weather?q=&units=metric&APPID=5d066958a60d315387d9492393935c19"
     let buff = str.split("");
     buff.splice(49, 0, location);
     return buff.join("");
 };
 
 function getImageURL(img){
-    return "http://openweathermap.org/img/w/"+img+".png";
+    return "https://openweathermap.org/img/w/"+img+".png";
 };
 
 function getMonthName(mon) {
