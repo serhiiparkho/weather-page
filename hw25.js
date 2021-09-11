@@ -59,7 +59,7 @@ function windDirection(deg) {
 function setLocation(location) {
     let str = "https://api.openweathermap.org/data/2.5/weather?q=&units=metric&APPID=5d066958a60d315387d9492393935c19"
     let buff = str.split("");
-    buff.splice(49, 0, location);
+    buff.splice(50, 0, location);
     return buff.join("");
 };
 
