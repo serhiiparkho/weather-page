@@ -16,55 +16,88 @@ inputField.addEventListener("focus", clearField);
 locBtn.addEventListener("click", request);
 
 function request() {
-    //console.log(setLocation(inputField.value));
-    fetch(setLocation(inputField.value))
-    .then(responce => responce.json())
-    .then(json => getData(json));
+  //console.log(setLocation(inputField.value));
+  fetch(setLocation(inputField.value))
+    .then((responce) => responce.json())
+    .then((json) => getData(json));
 }
-    
+
 function getData(obj) {
-    locElem.innerHTML = `${obj.name}`;
-    tempElem.innerHTML = `${obj.main.temp}°C`;
-    descElem.innerHTML = `${obj.weather[0].description}`;
-    humElem.innerHTML = `Humidity: ${obj.main.humidity} %`;
-    speedElem.innerHTML = `Wind speed: ${obj.wind.speed} km/h`;
-    dirElem.innerHTML = `Wind direction: ${obj.wind.deg} deg (${windDirection(obj.wind.deg)})`;
-    pressElem.innerHTML = `Pressure: ${obj.main.pressure} hPa`;
-    weatherIcon.src = getImageURL(obj.weather[0].icon);
-    let date = new Date(obj.dt*1000);
-    dateElem.innerHTML = `${getMonthName(date.getMonth())} ${date.getDate()}, ${date.getFullYear()}`;
-    timeElem.innerHTML = `${date.getHours()}:${date.getMinutes()}`;
-};
+  locElem.innerHTML = `${obj.name}`;
+  tempElem.innerHTML = `${obj.main.temp}°C`;
+  descElem.innerHTML = `${obj.weather[0].description}`;
+  humElem.innerHTML = `Humidity: ${obj.main.humidity} %`;
+  speedElem.innerHTML = `Wind speed: ${obj.wind.speed} km/h`;
+  dirElem.innerHTML = `Wind direction: ${obj.wind.deg} deg (${windDirection(
+    obj.wind.deg
+  )})`;
+  pressElem.innerHTML = `Pressure: ${obj.main.pressure} hPa`;
+  weatherIcon.src = getImageURL(obj.weather[0].icon);
+  let date = new Date(obj.dt * 1000);
+  dateElem.innerHTML = `${getMonthName(
+    date.getMonth()
+  )} ${date.getDate()}, ${date.getFullYear()}`;
+  timeElem.innerHTML = `${date.getHours()}:${showMinutes(date.getMinutes())}`;
+}
 
 function clearField() {
-    inputField.value = "";
+  inputField.value = "";
 }
 
 function windDirection(deg) {
-    switch(deg){
-        case (0):return "N";
-        case (90):return "E";
-        case (180): return "S";
-        case (270): return "W";
-    };
-    if (deg > 0 && deg < 90) {
-        return "N-E";
-    } else if (deg > 90 && deg < 180) {
-        return "S-E";
-    } else if (deg > 180 && deg < 270) {
-        return "S-W";
-    } else return "N-W";
-};
+  switch (deg) {
+    case 0:
+      return "N";
+    case 90:
+      return "E";
+    case 180:
+      return "S";
+    case 270:
+      return "W";
+  }
+  if (deg > 0 && deg < 90) {
+    return "N-E";
+  } else if (deg > 90 && deg < 180) {
+    return "S-E";
+  } else if (deg > 180 && deg < 270) {
+    return "S-W";
+  } else return "N-W";
+}
 
 function setLocation(location) {
-    return "https://api.openweathermap.org/data/2.5/weather?q="+location+"&units=metric&APPID=5d066958a60d315387d9492393935c19"
-};
+  return (
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    location +
+    "&units=metric&APPID=5d066958a60d315387d9492393935c19"
+  );
+}
 
-function getImageURL(img){
-    return "https://openweathermap.org/img/w/"+img+".png";
-};
+function getImageURL(img) {
+  return "https://openweathermap.org/img/w/" + img + ".png";
+}
 
 function getMonthName(mon) {
-    let months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",];
-    return months[mon];
-};
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  return months[mon];
+}
+
+function showMinutes(min) {
+  if (min < 10) {
+    return "0" + min;
+  } else {
+    return min;
+  }
+}
